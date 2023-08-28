@@ -9,8 +9,8 @@
 
 ## Ссылки на проект
 
-IP-адрес x.x.x.x
+IP-адрес 51.250.67.152
 
-Frontend https://...
+Frontend https://aaa.nomoredomainsicu.ru
 
-Backend https://...
+Backend https://api.aaa.nomoredomainsicu.ru
