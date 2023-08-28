@@ -22,6 +22,8 @@ router.use(authMiddleware);
 router.use('/users', userRouter);
 router.use('/cards', cardRouter);
 
+router.use('/logout', userController.logout);
+
 // Обработка запросов, которые не соответствуют ни одному маршруту
 router.use(() => {
   throw new NotFoundError('Запрашиваемый ресурс не найден');

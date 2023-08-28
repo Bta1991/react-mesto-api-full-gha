@@ -150,11 +150,24 @@ exports.login = async (req, res, next) => {
 
     res.cookie('token', token, {
       httpOnly: true,
-      sameSite: true,
+      sameSite: 'none',
     });
     // return res.send({ message: 'Авторизация успешна' });
     return res.send({ token });
   } catch (err) {
     return next(new Error('Произошла ошибка при попытке входа'));
+  }
+};
+
+exports.logout = async (req, res, next) => {
+  try {
+    await res.clearCookie('token', {
+      httpOnly: true,
+      sameSite: 'none',
+      secure: true,
+    });
+    return res.send({ message: 'Вы покинули сайт' });
+  } catch (err) {
+    return next(new Error('Ошибка выхода'));
   }
 };

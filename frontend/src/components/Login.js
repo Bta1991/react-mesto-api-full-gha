@@ -35,7 +35,6 @@ const Login = ({
 
         authorize(email, password)
             .then((data) => {
-                localStorage.setItem('jwt', data.token)
                 handleLogin(true)
                 setUserEmail(email)
                 handleStatus(true)

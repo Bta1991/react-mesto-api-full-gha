@@ -14,7 +14,7 @@ import ImagePopup from './ImagePopup'
 import InfoTooltip from './InfoTooltip'
 import CurrentUserContext from '../contexts/CurrentUserContext'
 import api from '../utils/Api'
-import { checkToken } from '../utils/Auth'
+import { verifyToken, logout } from '../utils/Auth'
 
 function App() {
     const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false)
@@ -77,11 +77,7 @@ function App() {
 
     const navigate = useNavigate()
     const checkToken = () => {
-        const jwt = localStorage.getItem('jwt')
-        if (!jwt) {
-            return
-        }
-        checkToken(jwt)
+        verifyToken()
             .then((res) => {
                 setUserEmail(res.data?.email)
                 setLoggedIn(true)
@@ -92,12 +88,19 @@ function App() {
                 console.log(err)
             })
     }
+
     const handleSignout = () => {
-        localStorage.removeItem('jwt')
-        setLoggedIn(false)
-        navigate('/')
-        setUserEmail('')
+        logout()
+            .then(() => {
+                setLoggedIn(false)
+                navigate('/')
+                setUserEmail('')
+            })
+            .catch((err) => {
+                console.log(err)
+            })
     }
+
     useEffect(() => {
         checkToken()
     }, [])

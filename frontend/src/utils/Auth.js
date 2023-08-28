@@ -1,4 +1,5 @@
-export const BASE_URL = 'https://api.aaa.nomoredomainsicu.ru'
+// export const BASE_URL = 'https://api.aaa.nomoredomainsicu.ru'
+import { API_URL, API_OPTIONS } from './apiConfig'
 
 function handleResponse(res) {
     if (res.ok) {
@@ -17,35 +18,31 @@ function handleResponse(res) {
 }
 
 export function register(email, password) {
-    return fetch(`${BASE_URL}/signup`, {
+    return fetch(`${API_URL}/signup`, {
         method: 'POST',
-        credentials: 'include',
-        headers: { 'Content-Type': 'application/json' },
+        ...API_OPTIONS,
         body: JSON.stringify({ email, password }),
     }).then(handleResponse)
 }
 
 export function authorize(email, password) {
-    return fetch(`${BASE_URL}/signin`, {
+    return fetch(`${API_URL}/signin`, {
         method: 'POST',
-        credentials: 'include',
-        headers: { 'Content-Type': 'application/json' },
+        ...API_OPTIONS,
         body: JSON.stringify({ email, password }),
     }).then(handleResponse)
 }
 
-export function checkToken() {
-    return fetch(`${BASE_URL}/users/me`, {
+export function verifyToken() {
+    return fetch(`${API_URL}/users/me`, {
         method: 'GET',
-        credentials: 'include',
-        headers: { 'Content-Type': 'application/json' },
+        ...API_OPTIONS,
     }).then(handleResponse)
 }
 
-export function logOut() {
-    return this._request('logout', {
+export function logout() {
+    return fetch(`${API_URL}/logout`, {
         method: 'GET',
-        credentials: 'include',
-        headers: { 'Content-Type': 'application/json' },
+        ...API_OPTIONS,
     })
 }
