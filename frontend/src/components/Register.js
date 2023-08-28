@@ -1,4 +1,4 @@
-import React, { useState, useForm } from 'react'
+import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { register } from '../utils/Auth'
 
@@ -10,6 +10,7 @@ const Register = ({ handleTooltip, handleStatus, handeTextTooltip }) => {
     })
 
     const handleChange = (e) => {
+        const { name, value } = e.target
         setFormValue((prevState) => ({
             ...prevState,
             [name]: value,
@@ -23,6 +24,10 @@ const Register = ({ handleTooltip, handleStatus, handeTextTooltip }) => {
         const { email, password, confirmPassword } = values
 
         e.preventDefault()
+        if (!email || !password || !confirmPassword) {
+            setErrorMessage('Заполните все поля!')
+            return
+        }
         if (password !== confirmPassword) {
             setErrorMessage('Введите идентичные пароли!')
             return
