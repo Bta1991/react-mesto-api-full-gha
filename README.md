@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 51.250.67.152
+IP 51.250.67.152
 
 Frontend https://aaa.nomoredomainsicu.ru
 

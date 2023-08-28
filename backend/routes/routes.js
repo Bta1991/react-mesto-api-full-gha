@@ -11,6 +11,12 @@ const authMiddleware = require('../middlewares/auth'); // Путь к auth.js
 
 const NotFoundError = require('../errors/not-found-err');
 
+router.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
 // Роуты авторизации и регистрации
 router.post('/signin', signInValidation, userController.login);
 router.post('/signup', signUpValidation, userController.createUser);
