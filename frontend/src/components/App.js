@@ -62,6 +62,7 @@ function App() {
                 api.getUserInfo(),
                 api.getInitialsCards(),
             ])
+            console.log(userData)
             setCurrentUser(userData)
             setCards(cardsData)
         } catch (err) {
