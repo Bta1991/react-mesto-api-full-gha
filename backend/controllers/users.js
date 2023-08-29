@@ -151,6 +151,8 @@ exports.login = async (req, res, next) => {
     res.cookie('token', token, {
       httpOnly: true,
       sameSite: 'none',
+      secure: true,
+      maxAge: 3600000 * 24 * 7,
     });
     // return res.send({ message: 'Авторизация успешна' });
     return res.send({ token });
