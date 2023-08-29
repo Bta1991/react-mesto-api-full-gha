@@ -39,7 +39,7 @@ const Login = ({
                 setUserEmail(email)
                 handleStatus(true)
                 handleTooltip(true)
-                handeTextTooltip('Вы восхитительны!')
+                handeTextTooltip('Здравствуйте!')
                 navigate('/')
             })
             .catch((err) => {
