@@ -154,8 +154,8 @@ exports.login = async (req, res, next) => {
       secure: true,
       maxAge: 3600000 * 24 * 7,
     });
-    // return res.send({ message: 'Авторизация успешна' });
-    return res.send({ token });
+    return res.send({ message: 'Авторизация успешна' });
+    // return res.send({ token });
   } catch (err) {
     return next(new Error('Произошла ошибка при попытке входа'));
   }
