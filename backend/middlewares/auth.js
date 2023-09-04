@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken'); // импортируем JSONwebtoken
 const util = require('util'); // импортируем модуль util для использования promisify
 const UnauthorizedError = require('../errors/unauthorized-err');
 
-const { JWT_SECRET = 'your-secret-key' } = process.env;
+const { JWT_SECRET = 'dev-secret' } = process.env;
 const jwtVerify = util.promisify(jwt.verify); // преобразуем коллбэк-функцию в промис
 
 module.exports = async (req, res, next) => {
