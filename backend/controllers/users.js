@@ -157,6 +157,11 @@ exports.login = async (req, res, next) => {
     return res.send({ message: 'Авторизация успешна' });
     // return res.send({ token });
   } catch (err) {
+    if (err.name === 'ValidationError') {
+      return next(
+        new BadRequestError('Переданы некорректные данные пользователя'),
+      );
+    }
     return next(new Error('Произошла ошибка при попытке входа'));
   }
 };
