@@ -44,7 +44,9 @@ const Login = ({
             })
             .catch((err) => {
                 handleStatus(false)
-                handeTextTooltip(err)
+                err.name === 'ValidationError'
+                ? handeTextTooltip('Переданы некорректные данные пользователя')
+                : handeTextTooltip(err);
                 handleTooltip(true)
             })
     }
